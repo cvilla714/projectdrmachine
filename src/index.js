@@ -12,6 +12,11 @@ const App = () => (
     ))}
   </div>
 );
-const Box = (props) => <div className="box">{props.text}</div>;
 
-ReactDOM.render(<App keys={keys} />, document.querySelector("#root"));
+class Box extends React.Component {
+  render() {
+    return <div className="box">{this.props.text}</div>;
+  }
+}
+
+ReactDOM.render(<App keys={keys} />, document.querySelector("#drum-machine"));

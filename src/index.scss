@@ -1,5 +1,38 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  margin: 0;
   background-color: cadetblue;
-  color: green;
+  margin: 0;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.display {
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  width: 400px;
+}
+
+.box {
+  border: 2px solid #333;
+  background-color: yellow;
+  cursor: pointer;
+  color: brown;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  height: 100px;
+  width: 100px;
 }

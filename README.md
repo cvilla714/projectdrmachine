@@ -33,7 +33,7 @@
 
 **Then you can go into the directory by typig `cd projectdrmachine `**
 
-**Finally just type this command `npm install` this will install all of the depnedecies for the project**
+**Finally just type the following command `npm install` this will install all of the depnedecies for the project**
 
 ### Usage
 

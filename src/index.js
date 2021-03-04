@@ -45,32 +45,63 @@ const sounds = [
 
 const App = () => (
   <div id="display" className="display">
+    <h1>Play a Sound</h1>
     {sounds.map((sound, idx) => (
-      <Box text={sound.key} key={idx} audio={sound.mp3} />
+      <DrumPad text={sound.key} key={idx} audio={sound.mp3} />
     ))}
   </div>
 );
 
-class Box extends React.Component {
+class DrumPad extends React.Component {
   constructor(props) {
     super(props);
 
     this.audio = React.createRef();
   }
 
+  componentDidMount() {
+    this.audio.current.addEventListener("ended", (e) => {
+      const parent = e.target.parentNode;
+      parent.classList.remove("active");
+    });
+  }
+
   playSound = () => {
     this.audio.current.play();
+
+    const id = this.audio.current.id;
+
+    const parent = this.audio.current.parentNode;
+    parent.classList.add("active");
+
+    const display = parent.parentNode;
+    display.querySelector("h1").innerText = `${id} is playing`;
   };
   render() {
     const { text, audio } = this.props;
 
     return (
-      <div className="box" onClick={this.playSound}>
+      <div className="drum-pad" onClick={this.playSound} id={`drum-${text}`}>
         {text}
         <audio ref={this.audio} src={audio} className="clip" id={text} />
       </div>
     );
   }
 }
+
+document.addEventListener("keydown", (e) => {
+  const id = e.key.toUpperCase();
+  const audio = document.getElementById(id);
+
+  if (audio) {
+    audio.currenTime = 0;
+    const parent = audio.parentNode;
+    parent.classList.add("active");
+
+    const display = parent.parentNode;
+    display.querySelector("h1").innerText = `${id} is playing`;
+    audio.play();
+  }
+});
 
 ReactDOM.render(<App />, document.querySelector("#drum-machine"));

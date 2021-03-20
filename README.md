@@ -1,6 +1,6 @@
 # Project: Drum Machine
 
-> Create a Drum Machine
+> Created a Drum Machine
 > that can play the sounds not only by clicking on the buttons
 > but also pressing your keyboard
 
